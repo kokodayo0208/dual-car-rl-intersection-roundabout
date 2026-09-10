@@ -1,0 +1,32 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+.env
+
+# Editors and OS files
+.DS_Store
+Thumbs.db
+.idea/
+
+# Training and evaluation outputs are local by default.
+results/*
+!results/README.md
+!results/compound_ppo_ttc_safe8.zip
+!results/compound_ppo_ttc_safe8_monitor.csv
+!results/compound_ppo_ttc_safe8_reward.png
+!results/compound_safe8.mp4
+*.mp4.partial
+*.tmp
+
+# Historical archives can be large; retain their documentation and source only
+outofuse/**/results/
+outofuse/**/logs/
+outofuse/**/diagnostics/
+outofuse/**/*.zip
+outofuse/**/*.mp4

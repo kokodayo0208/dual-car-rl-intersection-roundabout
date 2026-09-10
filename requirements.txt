@@ -1,0 +1,16 @@
+# Versions verified in the Windows reference environment (Python 3.13.14).
+# The vendored environment is loaded through PYTHONPATH.
+gymnasium==1.3.0
+stable-baselines3==2.9.0
+numpy==2.5.3
+torch==2.14.0
+matplotlib==3.11.1
+pandas==3.0.5
+pygame-ce==2.5.8
+# OPTIONAL — only needed by the standby scenario env_standby/random_road_env.py
+# (not by any training/evaluation command). Uncomment if you want it; note it
+# is a C extension and may need a compiler on fresh Python 3.13 machines:
+# noise>=1.2,<2
+imageio==2.37.4
+imageio-ffmpeg==0.6.0
+tqdm==4.70.0

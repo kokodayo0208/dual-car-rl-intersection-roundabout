@@ -1,0 +1,61 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "1) train: compound + PPO (100k, 8 envs)",
+            "type": "debugpy",
+            "request": "launch",
+            "python": "${command:python.interpreterPath}",
+            "module": "src.train",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--scene", "compound",
+                "--algo", "ppo",
+                "--use-ttc",
+                "--device", "cpu",
+                "--n-envs", "8",
+                "--timesteps", "100000",
+                "--suffix", "_safe8",
+                "--log-dir", "results"
+            ],
+            "subProcess": false,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/me5418_env_vendor",
+                "SDL_VIDEODRIVER": "dummy",
+                "OPENBLAS_NUM_THREADS": "1",
+                "OMP_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1",
+                "PYTHONUNBUFFERED": "1"
+            },
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "2) evaluate: safe8 model (+video)",
+            "type": "debugpy",
+            "request": "launch",
+            "python": "${command:python.interpreterPath}",
+            "module": "src.evaluate",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--scene", "compound",
+                "--algo", "ppo",
+                "--model", "results/compound_ppo_ttc_safe8.zip",
+                "--episodes", "1",
+                "--duration", "120",
+                "--end-on-crash",
+                "--fps", "60",
+                "--playback-speed", "2.5",
+                "--video", "results/compound_safe8.mp4"
+            ],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/me5418_env_vendor",
+                "SDL_VIDEODRIVER": "dummy",
+                "OPENBLAS_NUM_THREADS": "1",
+                "OMP_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1",
+                "PYTHONUNBUFFERED": "1"
+            },
+            "console": "integratedTerminal"
+        }
+    ]
+}

@@ -1,0 +1,128 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "me5418-env"
+description = "An environment for simulated highway driving tasks."
+# readme = "README.md"  # removed: no README shipped in the vendored package
+requires-python = ">= 3.10"
+authors = [{ name = "ME5418 Author", email = "you@example.com" }]
+maintainers = [{ name = "ME5418 Author", email = "you@example.com" }]
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = [
+    "Reinforcement Learning", "Car Simulation", "Traffic Simulation", "Machine Learning",
+    "RL", "AI", "ML",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "gymnasium>=1.0.0a2",
+    "farama-notifications>=0.0.1",
+    "numpy>=1.23.0",
+    "pygame-ce>=2.1.3",
+    "matplotlib",
+    "pandas",
+    "noise>=1.2.2",
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+testing = [
+    "diff-cover",
+    "pytest",
+    "pytest-cov",
+    "pytest-xdist",
+    "scipy",
+]
+
+[project.urls]
+Homepage = "https://github.com/<YOUR_GITHUB>/<REPO>"
+Repository = "https://github.com/<YOUR_GITHUB>/<REPO>"
+Documentation = "https://github.com/<YOUR_GITHUB>/<REPO>#readme"
+"Bug Report" = "https://github.com/<YOUR_GITHUB>/<REPO>/issues"
+Changelog = "https://github.com/<YOUR_GITHUB>/<REPO>/releases"
+
+# NOTE: These two lines have no effect currently, don't be confused
+[project.entry-points."gymnasium.envs.__root__"]
+me5418-env = "env_core:_register_me5418_envs"
+
+[dependency-groups]
+test = [
+    "diff-cover",
+    "pytest",
+    "pytest-cov",
+    "pytest-xdist",
+    "scipy",
+]
+docs = [
+    "sphinx",
+    "sphinx-autobuild",
+    "myst-parser",
+    "celshast",
+    "sphinx_github_changelog",
+    "sphinxcontrib-bibtex",
+    "ipykernel",
+    "jupyter-sphinx",
+]
+style = [
+    "pre-commit",
+    "ruff",
+    "ty",
+    "tqdm",
+]
+dev = [
+    { include-group = "test" },
+    { include-group = "docs" },
+    { include-group = "style" },
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["env_core", "env_core.*"]
+
+[tool.setuptools.package-data]
+
+[tool.black]
+
+[tool.isort]
+atomic = true
+profile = "black"
+src_paths = ["me5418_env", "tests", "docs/_scripts"]
+extra_standard_library = ["typing_extensions"]
+indent = 4
+lines_after_imports = 2
+multi_line_output = 3
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    # "E",  # pycodestyle errors
+    # "F",  # pyflakes
+    # "UP", # pyupgrade
+    # "I",  # isort
+    # "D",  # pydocstyle
+    "B",  # bugbear
+]
+ignore = []
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*" = ["I", "E"]
