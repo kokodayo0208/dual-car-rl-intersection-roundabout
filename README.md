@@ -12,13 +12,12 @@ TTC safety layer and a conflict-reservation mechanism.
 
 Two RL cars (green + orange, one shared policy) negotiating the compound
 cross-intersection + roundabout map among ~22 obstacle vehicles
-(3× real time, fixed top-down camera):
+(4× time-lapse overview, fixed top-down camera):
 
-<video src="https://github.com/kokodayo0208/dual-car-rl-intersection-roundabout/raw/main/results/compound_safe8.mp4" controls muted loop
-       style="max-width:100%;">
-  Your browser does not support embedded video —
-  <a href="results/compound_safe8.mp4">download the demo (compound_safe8.mp4)</a>.
-</video>
+![Demo overview](results/compound_safe8_demo.gif)
+
+▶ Full-quality video (2 min, 3× real time):
+[results/compound_safe8.mp4](results/compound_safe8.mp4)
 
 ---
 
